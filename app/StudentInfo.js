@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 
-function StudentInfo(props){
+export default function StudentInfo(props){
   return (
     <div>
       <p>Ryan Back</p>
@@ -13,5 +13,4 @@ function StudentInfo(props){
   );
 };
 
-export default StudentInfo;
 

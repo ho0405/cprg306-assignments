@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import StudentInfo from './StudentInfo.js';
+import StudentInfo from './StudentInfo';
 
 const HomePage = () => {
   return (
