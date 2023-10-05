@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import StudentInfo from '../components/StudentInfo.js';
+import StudentInfo from './StudentInfo.js';
 
 const HomePage = () => {
   return (
@@ -9,6 +9,8 @@ const HomePage = () => {
       <Link href="/week2">Go to Week 2</Link>
       <br></br>
       <Link href="/week3">Go to Week 3</Link>
+      <br></br>
+      <Link href="/week4">Go to Week 4</Link>
     </div>
   );
 };

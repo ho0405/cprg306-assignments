@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-const StudentInfo = () => {
+
+function StudentInfo(props){
   return (
     <div>
       <p>Ryan Back</p>
@@ -13,3 +14,4 @@ const StudentInfo = () => {
 };
 
 export default StudentInfo;
+
