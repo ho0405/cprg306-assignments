@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ItemList from './item-list';
 
-export function Page() {
+export function Week3Page() {
   return (
     <main>
       <h1 className="text-2xl font-bold">Shopping List</h1>
@@ -11,4 +11,4 @@ export function Page() {
   );
 }
 
-export default Page;
+export default Week3Page;
