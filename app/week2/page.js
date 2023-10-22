@@ -6,7 +6,10 @@ const Week2Page = () => {
     <div>
       <h1>My Shopping List</h1>
       <StudentInfo />
-      <Link href="/">Go to home</Link>
+      <Link href="/" legacyBehavior>
+    <a className="home-link">Go to home</a>
+</Link>
+
     </div>
 
   );

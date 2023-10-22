@@ -6,7 +6,10 @@ function Week4Page() {
   return (
     <div className="week4">
       <NewItem />
-      <Link href="/">Go to home</Link>
+      <Link href="/" legacyBehavior>
+    <a className="home-link">Go to home</a>
+</Link>
+
     </div>
     
   );

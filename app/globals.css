@@ -2,6 +2,89 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.item {
+  border: 2px solid #e2e2e2;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.item:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+}
+
+.item span {
+  flex: 1;
+  text-align: center;
+  font-size: 1.1em;
+  margin: 0 10px;
+}
+
+.item span:nth-child(2) {
+  flex: 0.5;
+}
+
+
+.button {
+  border: 2px solid #007BFF;
+  background-color: transparent;
+  color: #007BFF;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1em;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+.button.active {
+  background-color: #007BFF;
+  color: white;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.button + .button {
+  margin-left: 10px;
+}
+
+/*home link*/
+
+.home-link {
+  display: inline-block;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 1em;
+  margin-top: 20px;
+}
+
+.home-link:hover {
+  background-color: #0056b3;  
+  transform: scale(1.05);     
+  text-decoration: none;
+}
+
+.home-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0,123,255,0.5); 
+}
+
+
 /*:root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 191, 219, 254;
