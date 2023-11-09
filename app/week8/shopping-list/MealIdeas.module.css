@@ -1,0 +1,58 @@
+/* Corresponding CSS module file (MealIdeas.module.css) */
+
+/* Example CSS code */
+.body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.mealIdeas {
+  padding: 20px;
+}
+
+.heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.mealList {
+  list-style: none;
+  padding: 0;
+}
+
+.mealItem {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.mealName {
+  font-size: 20px;
+  color: #333;
+}
+
+.mealImage {
+  max-width: 100px;
+  border-radius: 5px;
+}
+
+.ingredients {
+  margin-top: 10px;
+}
+
+.ingredients h4 {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.ingredients ul {
+  list-style-type: circle;
+  padding-left: 20px;
+}
+
+.ingredients li {
+  font-size: 14px;
+  line-height: 1.6;
+}
