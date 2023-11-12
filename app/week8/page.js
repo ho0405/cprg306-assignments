@@ -1,31 +1,52 @@
-import React from 'react';
-import { useUserAuth } from './_utils/auth-context';
+'use client';
+import { useState, useEffect } from 'react';
+import { useUserAuth } from './_utils/auth-context'; // Adjust the path as needed
+import Link from 'next/link';
 
-function AuthenticationComponent() {
+function Week8Page() {
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleSignIn = async () => {
-    await gitHubSignIn();
-    // Additional logic after signing in (if necessary)
+    try {
+      await gitHubSignIn();
+    } catch (error) {
+      console.error('Error during GitHub sign-in:', error);
+    }
   };
 
   const handleSignOut = async () => {
-    await firebaseSignOut();
-    // Additional logic after signing out (if necessary)
+    try {
+      await firebaseSignOut();
+    } catch (error) {
+      console.error('Error during sign-out:', error);
+    }
   };
 
   return (
     <div>
-      {user ? (
-        <p>
-          Welcome, {user.displayName} ({user.email})
-          <button onClick={handleSignOut}>Sign Out</button>
-        </p>
-      ) : (
-        <button onClick={handleSignIn}>Sign In with GitHub</button>
+      {isClient && (
+        <>
+          {user ? (
+            <>
+              <p>
+                Welcome, {user.displayName} ({user.email})
+              </p>
+              <button onClick={handleSignOut}>Sign Out</button>
+              {/* Updated Link usage according to the latest Next.js practices */}
+              <Link href="/week8/shopping-list">Go to Shopping List</Link>
+            </>
+          ) : (
+            <button onClick={handleSignIn}>Sign In with GitHub</button>
+          )}
+        </>
       )}
     </div>
   );
 }
 
-export default AuthenticationComponent;
+export default Week8Page;

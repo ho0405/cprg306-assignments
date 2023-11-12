@@ -1,15 +1,33 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useUserAuth } from '../_utils/auth-context';
 import NewItem from './new-item';
 import ItemList from './item-list';
-import MealIdeas from './meal-ideas'; // Import the MealIdeas component
+import MealIdeas from './meal-ideas';
 import itemsData from './items.json';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-export default function Week7Page() {
+export default function ShoppingListPage() {
   const [items, setItems] = useState(itemsData);
-  const [selectedItemName, setSelectedItemName] = useState(''); // State for the selected item name
+  const [selectedItemName, setSelectedItemName] = useState('');
+  const { user } = useUserAuth();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    // Set isClient to true once the component mounts
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    // This useEffect will run only on the client side and only after the component has mounted
+    if (isClient && !user) {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const router = useRouter();
+      router.replace('/week8'); // Adjust this path to your landing page
+    }
+  }, [user, isClient]);
 
   const handleAddItem = (newItem) => {
     setItems((prevItems) => [
@@ -19,7 +37,6 @@ export default function Week7Page() {
   };
 
   const handleItemSelect = (itemName) => {
-    // Clean up the item name, if necessary, before setting it
     const cleanedItemName = itemName
       .split(',')[0]
       .trim()
@@ -30,17 +47,21 @@ export default function Week7Page() {
     setSelectedItemName(cleanedItemName);
   };
 
-  return (
-    <main>
-      <h1>Shopping List</h1>
-      <NewItem onAddItem={handleAddItem} />
-      <ItemList items={items} onItemSelect={handleItemSelect} />{' '}
-      {/* Pass handleItemSelect to ItemList */}
-      <MealIdeas ingredient={selectedItemName} />{' '}
-      {/* Use the MealIdeas component with the selected item name */}
-      <Link href="/" legacyBehavior>
-        <a className="home-link">Go to home</a>
-      </Link>
-    </main>
-  );
+  if (user) {
+    return (
+      <main>
+        <h1>Shopping List</h1>
+        <NewItem onAddItem={handleAddItem} />
+        <ItemList items={items} onItemSelect={handleItemSelect} />{' '}
+        {/* Pass handleItemSelect to ItemList */}
+        <MealIdeas ingredient={selectedItemName} />{' '}
+        {/* Use the MealIdeas component with the selected item name */}
+        <Link href="/" legacyBehavior>
+          <a className="home-link">Go to Home</a>
+        </Link>
+      </main>
+    );
+  } else {
+    return null;
+  }
 }
